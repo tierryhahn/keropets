@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany  } from "typeorm";
+import { Pets } from "./pets.entity";
 
 @Entity('users')
 class User{
@@ -27,6 +28,8 @@ class User{
     @UpdateDateColumn()
     updatedAt: Date
     
+    @OneToMany(() => Pets, userPets => userPets.user)
+    pets: Pets[]
 }
 
 export {User}
