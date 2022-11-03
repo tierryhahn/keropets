@@ -3,6 +3,7 @@ import { Ong } from "./ong.entity";
 import { User } from "./user.entity";
 
 
+
 @Entity("pets")
 export class Pets {
     @PrimaryGeneratedColumn("uuid")
@@ -20,7 +21,7 @@ export class Pets {
     @Column()
     age: string;
 
-    @Column()
+    @Column("boolean", {default: false})
     adopted: boolean;
 
     @ManyToOne(() => User, {eager: true})
