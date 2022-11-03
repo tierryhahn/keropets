@@ -1,4 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Address } from "./adress_entity";
+import { Donation } from "./donation.entity";
 import { Pets } from "./pets.entity";
 
 @Entity("ong")
@@ -8,8 +10,7 @@ export class Ong {
     id: string;
 
     @Column({
-        unique: true,
-
+        unique: true
     })
     email: string;
 
@@ -25,18 +26,18 @@ export class Ong {
     @UpdateDateColumn({type: "date"})
     updatedAt: Date
 
-    @OneToOne(() => Address, (ong) => Ong, {
+    @OneToOne(() => Address, ong => Ong, {
         eager: true,
         cascade: true
     })
     @JoinColumn()
-    address: IAddressRequest;
+    address: Address;
 
-    @OneToMany(() => Pets, (pet) => pet.ong)
+    @OneToMany(() => Pets, pet => pet.ong)
     pet: Pets[];
 
-    @OneToMany(() => Donations, (donations) => donations.ong)
-    donations: Donations[]
+    @OneToMany(() => Donation, (donation) => donation.ong)
+    donations: Donation[]
 
 
 
