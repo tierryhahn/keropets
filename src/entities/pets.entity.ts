@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne  } from "typeorm"
 import { Ong } from "./ong.entity";
+import { User } from "./user.entity";
 
 
 @Entity("pets")
