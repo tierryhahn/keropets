@@ -14,7 +14,7 @@ app.use(express.json())
 app.use("/ong", ongRoutes)
 app.use("/ong", sessionRoutes)
 app.use("/pet", petRoutes)
-app.use('/pets', petRoutes)
+app.use('/pets', petRoutess)
 app.use('/donations', donationRoutes)
     
 appRoutes(app)
