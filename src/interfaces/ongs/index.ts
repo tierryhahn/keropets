@@ -18,7 +18,7 @@ export interface IOngRequest {
     name: string,
     email: string,
     password: string,
-    adress: Address
+    address: Address
 }
 
 export interface IOngUpdate {

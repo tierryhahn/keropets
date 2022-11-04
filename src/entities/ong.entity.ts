@@ -9,6 +9,9 @@ export class Ong {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
+    @Column()
+    name: string;
+
     @Column({
         unique: true
     })
