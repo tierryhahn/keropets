@@ -1,10 +1,9 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
-import {v4 as uuid} from "uuid"
+import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Address{
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     readonly id: string
 
     @Column()
@@ -22,9 +21,4 @@ export class Address{
     @Column()
     state: string
 
-    constructor(){
-        if(!this.id){
-            this.id = uuid()
-        }
-    }
 }
