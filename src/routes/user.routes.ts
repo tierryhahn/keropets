@@ -1,15 +1,15 @@
 import { Router } from "express";
+import { createUserController } from "../controllers/user/createUsers.controller";
 import { updateUserController } from "../controllers/user/updateUser.controller";
 
 import userLoginController from "../controllers/userLogin.controller";
 import listUserController from "../services/user/listUsers.service";
 
-const routes = Router();
+const userRoutes = Router();
 
-export const userRoutes = () => {
-  routes.post("/", userLoginController);
-  routes.get("/", listUserController);
-  routes.patch("", updateUserController);
+  userRoutes.post("/", createUserController)
+  userRoutes.post("/", userLoginController);
+  userRoutes.get("/", listUserController);
+  userRoutes.patch("", updateUserController);
 
-  return routes;
-};
+  export default userRoutes
