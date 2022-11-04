@@ -2,6 +2,7 @@ import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors/appError";
 import { Ong } from "../../entities/ong.entity";
+import { IOngUpdate } from "../../interfaces/ongs";
 
 const ongUpdateService = async (
   { name, email, password }: IOngUpdate,

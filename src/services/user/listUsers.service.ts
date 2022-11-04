@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AppError, handleError } from "../errors/appError";
-import listUsersService from "../controllers/listUsers.controller";
+import { AppError, handleError } from "../../errors/appError";
+import listUsersService from "../../controllers/listUsers.controller";
 import { instanceToPlain } from "class-transformer";
 
 const listUserController = async (req: Request, resp: Response) => {
