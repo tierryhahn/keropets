@@ -25,4 +25,4 @@ app.get('/', (req: Request, res: Response) => {
     
 app.use(errorMiddleware)
     
-app.listen(process.env.PORT || 3000)
+export default app
