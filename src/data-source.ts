@@ -6,7 +6,7 @@ export const AppDataSource = new DataSource({
   url: process.env.DATABASE_URL,
   ssl:
     process.env.NODE_ENV === "production"
-      ? {ca: process.env.SSL_CERT}
+      ? {rejectUnauthorized: false}
       : false,
   synchronize: false,
   logging: true,
