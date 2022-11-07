@@ -14,10 +14,10 @@ export class Donation {
   @Column({ length: 68 })
   quantity: string
 
-  @ManyToOne(() => User)
-  user: User
+  @Column()
+  donatedBy: string
 
-  @ManyToOne(() => Ong)
-  ong: Ong
+  @Column({type: "date"})
+  donatedAt: Date
 
 }

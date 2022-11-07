@@ -9,6 +9,9 @@ export class Ong {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
+    @Column({})
+    name: string
+
     @Column({
         unique: true
     })
@@ -33,14 +36,6 @@ export class Ong {
     @JoinColumn()
     address: Address;
 
-    @OneToMany(() => Pets, pet => pet.ong)
-    pet: Pets[];
-
-    @OneToMany(() => Donation, (donation) => donation.ong)
-    donations: Donation[]
-
-
-
-
+    
 
 }

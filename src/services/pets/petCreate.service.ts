@@ -3,16 +3,17 @@ import { Ong } from "../../entities/ong.entity";
 import { Pets } from "../../entities/pets.entity";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appError";
+import { IPetsRequest } from "../../interfaces/pets";
 
 
 
-const petCreateService = async ({name, species, breed, age, ongId}: IPetsRequest) => {
+const petCreateService = async ({name, species, breed, age, ownerId}: IPetsRequest): Promise<Pets> => {
 
     const petRepository = AppDataSource.getRepository(Pets);
     const ongRepository = AppDataSource.getRepository(Ong);
     const userRepository = AppDataSource.getRepository(User);
 
-    const ongs = await ongRepository.findOneBy({id: ongId});
+    const ongs = await ongRepository.findOneBy({id: ownerId});
 
     
 
@@ -27,7 +28,7 @@ const petCreateService = async ({name, species, breed, age, ongId}: IPetsRequest
     pet.species === species &&
     pet.breed === breed &&
     pet.age === age && 
-    pet.ong === ongId 
+    pet.ownerId === ownerId 
   )
 
   if(petAlreadyExists) {
@@ -39,7 +40,7 @@ const petCreateService = async ({name, species, breed, age, ongId}: IPetsRequest
     species,
     breed,
     age,
-    ong: ongs,
+    ownerId
 
   })
   await petRepository.save(createdPet);

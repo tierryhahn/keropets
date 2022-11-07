@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors/appError";
 import { Ong } from "../../entities/ong.entity";
 
-const ongDeleteservice = async (id: string) => {
+const ongDeleteservice = async (id: string): Promise<void> => {
     const ongRepository = AppDataSource.getRepository(Ong);
 
     const findOng = await ongRepository.findOneBy({

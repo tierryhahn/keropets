@@ -21,13 +21,12 @@ export class Pets {
     @Column()
     age: string;
 
-    @Column("boolean", {default: false})
-    adopted: boolean;
+    @Column("boolean", {default: true})
+    isAvailable: boolean;
 
-    @ManyToOne(() => User, {eager: true})
-    user: User
+    @Column()
+    ownerId: string;
 
-    @ManyToOne(() => Ong, {eager: true})
-    ong: Ong
+    
 
 }

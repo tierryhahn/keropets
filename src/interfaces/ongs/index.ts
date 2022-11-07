@@ -10,7 +10,7 @@ export interface IOng {
     updatedAt: Date,
     pets: Pets[],
     donations: string,
-    adress: string
+    address: string
 
 }
 
@@ -18,14 +18,14 @@ export interface IOngRequest {
     name: string,
     email: string,
     password: string,
-    adress: Address
+    address: Address
 }
 
 export interface IOngUpdate {
     name?: string,
     email?: string,
     password?: string,
-    adress?: Address
+    address?: Address
 }
 
 export interface IOngLogin {

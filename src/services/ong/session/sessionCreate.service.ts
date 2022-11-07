@@ -3,8 +3,9 @@ import { Ong } from "../../../entities/ong.entity";
 import { compare } from "bcryptjs";
 import { AppError } from "../../../errors/appError";
 import jwt from "jsonwebtoken";
+import { IOngLogin } from "../../../interfaces/ongs";
 
-const sessionCreateService = async({email, password}: IOngLogin) => {
+const sessionCreateService = async({email, password}: IOngLogin): Promise<string> => {
     const ongRepository = AppDataSource.getRepository(Ong);
 
     const ongs = await ongRepository.find();

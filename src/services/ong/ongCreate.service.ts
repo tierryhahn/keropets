@@ -1,7 +1,9 @@
 import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
+import { Address } from "../../entities/adress_entity";
 import { Ong } from "../../entities/ong.entity";
 import { AppError } from "../../errors/appError";
+import { IOngRequest } from "../../interfaces/ongs";
 
 
 const ongCreateService = async ({
@@ -9,7 +11,7 @@ const ongCreateService = async ({
   email,
   password,
   address: { district, zipCode, number, city, state },
-}: IOngRequest) => {
+}: IOngRequest): Promise<Ong> => {
   const ongRepository = AppDataSource.getRepository(Ong);
   const addressRepository = AppDataSource.getRepository(Address);
 
@@ -25,7 +27,7 @@ const ongCreateService = async ({
     throw new AppError("Password is missing");
   }
 
-  const hashedPassword = await hash(password, 10);
+  
 
   const addresses = await addressRepository.find();
 
@@ -58,10 +60,13 @@ const ongCreateService = async ({
 
   await addressRepository.save(createdAddress);
 
-  const createdOng = ongRepository.create({
+  const hashedPassword = await hash(password, 10);
+
+  const createdOng =  ongRepository.create({
     name,
     email,
-    password,
+    password: hashedPassword,
+    isActive: true,
     address: { ...createdAddress },
   });
 
