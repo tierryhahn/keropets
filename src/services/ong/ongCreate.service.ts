@@ -5,13 +5,12 @@ import { Ong } from "../../entities/ong.entity";
 import { AppError } from "../../errors/appError";
 import { IOngRequest } from "../../interfaces/ongs";
 
-
 const ongCreateService = async ({
   name,
   email,
   password,
   address: { district, zipCode, number, city, state },
-}: IOngRequest): Promise<Ong> => {
+}: IOngRequest) => {
   const ongRepository = AppDataSource.getRepository(Ong);
   const addressRepository = AppDataSource.getRepository(Address);
 
@@ -26,8 +25,6 @@ const ongCreateService = async ({
   if (!password) {
     throw new AppError("Password is missing");
   }
-
-  
 
   const addresses = await addressRepository.find();
 
@@ -62,15 +59,17 @@ const ongCreateService = async ({
 
   const hashedPassword = await hash(password, 10);
 
-  const createdOng =  ongRepository.create({
+  const createdOng = ongRepository.create({
     name,
     email,
     password: hashedPassword,
-    isActive: true,
+
     address: { ...createdAddress },
   });
 
   await ongRepository.save(createdOng);
+
+  
 
   return createdOng;
 };

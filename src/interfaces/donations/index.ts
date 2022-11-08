@@ -1,6 +1,12 @@
 export interface IDonationRequest {
-  userId: string
-  ongId: string
+  type: string
+  donatedBy: string
+  donatedTo: string
+  quantity: string
+}
+export interface IDonationCreated {
+  user: string
+  ong: string
   type: string
   quantity: string
 }

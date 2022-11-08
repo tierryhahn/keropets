@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm'
 import { User } from './user.entity'
 import { Ong } from './ong.entity'
 
@@ -16,8 +16,11 @@ export class Donation {
 
   @Column()
   donatedBy: string
+  
+  @Column()
+  donatedTo: string
 
-  @Column({type: "date"})
+  @CreateDateColumn({type: "date"})
   donatedAt: Date
 
 }

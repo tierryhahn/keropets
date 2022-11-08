@@ -5,13 +5,12 @@ import { updateUserController } from "../controllers/user/updateUser.controller"
 import userLoginController from "../controllers/userLogin.controller";
 import listUserController from "../services/user/listUsers.service";
 
-const routes = Router();
+const useroutes = Router();
 
-export const userRoutes = () => {
-  routes.post("", createUserController)
-  routes.post("/", userLoginController);
-  routes.get("/", listUserController);
-  routes.patch("", updateUserController);
+useroutes.post("", createUserController)
+useroutes.post("/", userLoginController);
+useroutes.get("/", listUserController);
+useroutes.patch("", updateUserController);
 
-  return routes;
-};
+export default useroutes
+

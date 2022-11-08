@@ -31,8 +31,8 @@ const petCreateService = async ({name, species, breed, age, ownerId}: IPetsReque
     pet.ownerId === ownerId 
   )
 
-  if(petAlreadyExists) {
-    throw new AppError("Pet is already registred", 400)
+  if (petAlreadyExists) {
+    throw new AppError("Pet is already registred", 400);
   }
 
   const createdPet = petRepository.create({
@@ -45,7 +45,7 @@ const petCreateService = async ({name, species, breed, age, ownerId}: IPetsReque
   })
   await petRepository.save(createdPet);
 
-  return createdPet
-}
+  return createdPet;
+};
 
 export default petCreateService;

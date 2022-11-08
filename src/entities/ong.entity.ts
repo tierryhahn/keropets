@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Exclude } from "class-transformer";
 import { Address } from "./adress_entity";
 import { Donation } from "./donation.entity";
 import { Pets } from "./pets.entity";
@@ -9,18 +10,18 @@ export class Ong {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({})
-    name: string
+    @Column()
+    name: string;
 
     @Column({
         unique: true
     })
     email: string;
 
-    @Column()
+    @Column({default: true})
     isActive: boolean;
 
-    @Column()
+    @Exclude()
     password: string;
 
     @CreateDateColumn({type: "date"})
