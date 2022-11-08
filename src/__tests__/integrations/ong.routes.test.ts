@@ -3,7 +3,7 @@ import { DataSource } from "typeorm";
 import app from "../../app";
 import { AppDataSource } from "../../data-source";
 import { IOngRequest, IAddressRequest } from "../../interfaces/ongs";
-import { mockedOng } from "../mocks";
+import { mockedOng, mockedOngLogin } from "../mocks";
 
 
 describe("Testing Ong routes", () => {
@@ -37,5 +37,13 @@ describe("Testing Ong routes", () => {
         expect(response.body.address).toHaveProperty("city")
         expect(response.body.address).toHaveProperty("state")
         expect(response.status).toBe(201)
+    })
+
+    test("POST /login -  should be able to login a ong",async () => {
+        const response = await request(app).post("/ong/login").send(mockedOngLogin);
+        
+        expect(response.body).toHaveProperty("token")
+        expect(response.status).toBe(200)
+     
     })
 })

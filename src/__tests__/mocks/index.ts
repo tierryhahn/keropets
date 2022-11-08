@@ -1,4 +1,4 @@
-import { IOngRequest } from "../../interfaces/ongs";
+import { IOngRequest, IOngLogin } from "../../interfaces/ongs";
 
 
 export const mockedOng: IOngRequest = {
@@ -12,4 +12,10 @@ export const mockedOng: IOngRequest = {
         city: "Piedade",
         state: "SP"
     }
+
+}
+
+export const mockedOngLogin : IOngLogin = {
+    email: "contato@abrigobichos.com",
+    password: "12345"
 }

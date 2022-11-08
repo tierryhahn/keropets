@@ -1,3 +1,4 @@
+import "express-async-errors"
 import express from 'express'
 import { errorMiddleware } from './middlewares/error.middleware'
 import { Request, Response } from 'express'

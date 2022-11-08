@@ -21,8 +21,10 @@ export class Ong {
     @Column({default: true})
     isActive: boolean;
 
+    @Column({length:120})  
     @Exclude()
     password: string;
+
 
     @CreateDateColumn({type: "date"})
     createdAt: Date

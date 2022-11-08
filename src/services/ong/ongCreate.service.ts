@@ -58,6 +58,7 @@ const ongCreateService = async ({
   await addressRepository.save(createdAddress);
 
   const hashedPassword = await hash(password, 10);
+  
 
   const createdOng = ongRepository.create({
     name,

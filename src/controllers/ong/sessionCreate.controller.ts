@@ -5,7 +5,7 @@ const sessionCreateController = async (req: Request, res: Response) => {
     
         const data = req.body;
         const token = await sessionCreateService(data);
-        return res.json({ token });
+        return res.json({token}) 
   
 }
 
