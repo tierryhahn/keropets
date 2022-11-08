@@ -6,16 +6,24 @@
   "author": "Tierry <tierryhahn@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts",
+    "dev": "ts-node-dev src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "test": "cross-env NODE_ENV=test SECRET_KEY=1234 jest"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
+    "@types/jest": "^29.2.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.11.8",
+    "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
+    "cross-env": "^7.0.3",
+    "jest": "^29.2.2",
+    "sqlite3": "^5.1.2",
+    "supertest": "^6.3.1",
+    "ts-jest": "^29.0.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4"
   },
