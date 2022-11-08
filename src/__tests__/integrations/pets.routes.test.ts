@@ -4,7 +4,7 @@ import { DataSource } from 'typeorm'
 import { AppDataSource } from '../../data-source'
 
 
-describe('Testando rotas de pets', () => {
+describe('Testing pet routes', () => {
   let connection: DataSource
 
   beforeAll(async () => {
@@ -19,7 +19,7 @@ describe('Testando rotas de pets', () => {
     await connection.destroy()
   })
 
-  it('GET /pet -> Deve ser capaz de listar todos os pets', async () => {
+  it('GET /pet -> Must be able to list all pets', async () => {
 
     const result = await request(app).get('/pet')
 
