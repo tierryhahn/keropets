@@ -1,5 +1,7 @@
 # Documentação da API
 
+**BASE_URL: https://keropets.herokuapp.com/**
+
 ## Tabela de Conteúdos
 
 - [Visão Geral](#1-visão-geral)
@@ -72,13 +74,15 @@ yarn typeorm migration:run -d src/data-source.ts
 
 ### Índice
 
-- [Users](#1-users)
-    - [POST - /users](#11-criação-de-usuário)
-    - [GET - /users](#12-listando-usuários)
-	- [GET - /users/:user_id](#13-listar-usuário-por-id)
-- [Products](#2-products)
-- [Cart](#3-cart)
-- [Users](#4-buys)
+- [User](#1-user)
+    - [POST - /user](#11-criação-de-usuário)
+    - [POST - /user/login](#12-login-de-usuário)
+    - [GET - /user](#13-listando-usuários)
+	- [PATCH - /user/:id](#14-update-usuário)
+	- [DELETE - /user/:id](#15-delete-usuário)
+- [Pets](#2-pets)
+- [Donations](#3-donations)
+- [Ong](#4-ong)
 
 ---
 
