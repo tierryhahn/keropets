@@ -6,7 +6,7 @@ declare global {
 			user: {
 				isOng: boolean;
 				id: string;
-			};
+			}
 			ong: {
 				isActive: boolean;
 				id: string;

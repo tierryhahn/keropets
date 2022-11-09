@@ -19,7 +19,7 @@ const ensureOngAuthMiddleware = async (req: Request, res: Response, next: NextFu
                 message: "Invalid token"
             })
         }
-        req.ong = {
+        req.ong  = {
             isActive: decoded.isActive,
             id: decoded.sub
         }

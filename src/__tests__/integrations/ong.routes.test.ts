@@ -46,4 +46,38 @@ describe("Testing Ong routes", () => {
         expect(response.status).toBe(200)
      
     })
+    test("GET /ong - Must be able to list ongs", async () => {
+        await request(app).post('/ong').send(mockedOng)
+        const ongLoginResponse = await request(app).post('/ong').send(mockedOngLogin)
+        const response = await request(app).get('/ong').set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
+        expect(response.body).toHaveLength(1)
+    })
+
+    test("GET /ong/:id - Must be able to list one ong by its id", async () => {
+        
+        await request(app).post('/ong').send(mockedOng)
+        const ongLoginResponse = await request(app).post('/ong').send(mockedOngLogin)
+        const ongToBeRequested = await request(app).get(`/ong/`).set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
+        //console.log(ongToBeRequested.body)
+        const responsePassword = await request(app).get(`/ong/${ongToBeRequested.body[0].id}`).set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
+        const response = { ...responsePassword.body}
+        delete response.password
+        console.log(response.body);
+        
+        expect(response).toHaveProperty("id")
+        expect(response).toHaveProperty("email")
+        expect(response).not.toHaveProperty("password")
+        expect(response).toHaveProperty("isActive")
+        expect(response).toHaveProperty("createdAt")
+        expect(response).toHaveProperty("updatedAt")
+        expect(response).toHaveProperty("address")
+        expect(response.address).toHaveProperty("id")
+        expect(response.address).toHaveProperty("district")
+        expect(response.address).toHaveProperty("zipCode")
+        expect(response.address).toHaveProperty("number")
+        expect(response.address).toHaveProperty("city")
+        expect(response.address).toHaveProperty("state")
+    })
+
+
 })

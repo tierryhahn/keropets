@@ -16,11 +16,11 @@ ongRoutes.post(
 ongRoutes.patch("/:id", ensureOngAuthMiddleware, ongUpdateController)
 ongRoutes.delete("/:id", ensureOngAuthMiddleware, ongDeleteController)
 ongRoutes.get(
-    "", ensureOngAuthMiddleware,
+    "", 
     ongListController
 )
 ongRoutes.get(
-    "/:id", ensureOngAuthMiddleware,
+    "/:id",
     ongListByIdController
 )
 
