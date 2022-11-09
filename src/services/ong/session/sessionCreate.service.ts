@@ -27,7 +27,8 @@ const sessionCreateService = async({email, password}: IOngLogin): Promise<string
 
   const token = jwt.sign(
     {
-      id: account.id,
+      isOngAdm: account.isOngAdm,
+      id: account.id
     },
     process.env.SECRET_KEY as string,
     {

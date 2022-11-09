@@ -26,11 +26,12 @@ describe('Test for Ong services', () => {
             name: "Abrigo do Bichos",
             email: "contato@abrigobichos.com",
             password: "12345",
+            isOngAdm: true,
             address:  {
-                district: "Rua Heleodo Pires de camargo",
-                zipCode: "18150000",
-                number: "67",
-                city: "Piedade",
+                district: "Av Rui Barbosa",
+                zipCode: "34561234",
+                number: "69",
+                city: "Morumbi",
                 state: "SP"
             },
         

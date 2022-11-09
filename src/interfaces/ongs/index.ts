@@ -13,6 +13,8 @@ export interface IOng {
     name: string,
     email: string,
     isActive: boolean,
+    isOngAdm: boolean,
+    isOng: boolean,
     password: string,
     createdAt: Date,
     updatedAt: Date,
@@ -26,15 +28,19 @@ export interface IOngRequest {
     name: string,
     email: string,
     password?: string,
+    isOngAdm: boolean,
     address: IAddressRequest
 }
+
 
 export interface IOngUpdate {
     name?: string,
     email?: string,
     password?: string,
-    address?: IAddressRequest
+  
 }
+
+
 
 export interface IOngLogin {
     email: string,

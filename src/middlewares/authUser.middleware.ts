@@ -24,7 +24,7 @@ const authenticationMiddleware = (
       }
 
       req.user = {
-        isOng: decoded.isOng,
+        isAdm: decoded.isAdm,
         id: decoded.id,
       };
 

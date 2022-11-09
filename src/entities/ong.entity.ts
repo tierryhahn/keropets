@@ -21,8 +21,14 @@ export class Ong {
     @Column({default: true})
     isActive: boolean;
 
-    @Column({length:120})  
+    @Column({default: true})
+    isOng: boolean;
+
+    @Column()
+    isOngAdm: boolean;
+
     @Exclude()
+    @Column({length:120})  
     password: string;
 
 

@@ -2,8 +2,9 @@ import  request  from "supertest";
 import { DataSource } from "typeorm";
 import app from "../../app";
 import { AppDataSource } from "../../data-source";
-import { IOngRequest, IAddressRequest } from "../../interfaces/ongs";
-import { mockedOng, mockedOngLogin } from "../mocks";
+import { Ong } from "../../entities/ong.entity";
+import { IOngRequest, IAddressRequest, IOng } from "../../interfaces/ongs";
+import { mockedAdminLogin, mockedOng, mockedOngAdm, mockedOngLogin, mockedOngNoAdm } from "../mocks";
 
 
 describe("Testing Ong routes", () => {
@@ -47,8 +48,8 @@ describe("Testing Ong routes", () => {
      
     })
     test("GET /ong - Must be able to list ongs", async () => {
-        await request(app).post('/ong').send(mockedOng)
-        const ongLoginResponse = await request(app).post('/ong').send(mockedOngLogin)
+      //  await request(app).post('/ong').send(mockedOng)
+        const ongLoginResponse = await request(app).post('/ong/login').send(mockedOngLogin)
         const response = await request(app).get('/ong').set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
         expect(response.body).toHaveLength(1)
     })
@@ -56,13 +57,13 @@ describe("Testing Ong routes", () => {
     test("GET /ong/:id - Must be able to list one ong by its id", async () => {
         
         await request(app).post('/ong').send(mockedOng)
-        const ongLoginResponse = await request(app).post('/ong').send(mockedOngLogin)
-        const ongToBeRequested = await request(app).get(`/ong/`).set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
-        //console.log(ongToBeRequested.body)
+        const ongLoginResponse = await request(app).post('/ong/login').send(mockedOngLogin)
+        const ongToBeRequested = await request(app).get(`/ong`).set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
+        
         const responsePassword = await request(app).get(`/ong/${ongToBeRequested.body[0].id}`).set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
         const response = { ...responsePassword.body}
-        delete response.password
-        console.log(response.body);
+        
+        
         
         expect(response).toHaveProperty("id")
         expect(response).toHaveProperty("email")
@@ -87,15 +88,15 @@ describe("Testing Ong routes", () => {
             email: "contato@novaong.com"
         }
 
-        const ongLogin = await request(app).post("/ong").send(mockedOngLogin);
+        const ongLogin = await request(app).post("/ong/login").send(mockedOngLogin);
         const token = `Bearer ${ongLogin.body.token}`
 
         const ongTobeUpdatedRequest= await request(app).get("/ong").set("Authorization", token)
         const ongUpdatedId = ongTobeUpdatedRequest.body[0].id
 
         const response = await request(app).patch(`/ong/${ongUpdatedId}`).set("Authorization", token).send(newValues)
-        console.log(response.body)
-        const ongUpdated = await request(app).get("ong").set("Authorization", token);
+       
+       // const ongUpdated = await request(app).get("ong").set("Authorization", token);
 
 
 
@@ -103,6 +104,26 @@ describe("Testing Ong routes", () => {
         expect(response.body.name).toEqual("Novo Nome da Ong")
         expect(response.body).not.toHaveProperty("password")
 
+    })
+
+    test("DELETE /ong/:id - Must be able to soft delete a ong", async () => {
+        await request(app).post("/ong").send(mockedOngNoAdm);
+        await request(app).post("/ong").send(mockedOngAdm);
+        const adminLoginResponse = await request(app).post("/ong/login").send(mockedAdminLogin);
+        const ongTobeDeleted = await request(app).get("/ong").set("Authorization", `Bearer ${adminLoginResponse.body.token}`)
+        
+        const ongDel: Array<Ong> = ongTobeDeleted.body
+        const ongDelId = ongDel.filter(ong => ong.isOngAdm === false)[0].id;
+        const response = await request(app).delete(`/ong/${ongDelId}`).set("Authorization", `Bearer ${adminLoginResponse.body.token}`)
+        const findUser = await request(app).get("/ong").set("Authorization", `Bearer ${adminLoginResponse.body.token}`)
+        const ongDel2: Array<Ong> = findUser.body
+        
+        const findOgDelId: any =  ongDel2.find(ong => ong.id === ongDelId)
+        console.log(findOgDelId)
+
+        expect(response.status).toBe(204)
+        expect(findOgDelId.isActive).toBe(false)
+        
     })
 
 

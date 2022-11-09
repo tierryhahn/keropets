@@ -5,7 +5,7 @@ import { Ong } from "../../entities/ong.entity";
 import { IOngUpdate } from "../../interfaces/ongs";
 
 const ongUpdateService = async (
-  { name, email, password }: IOngUpdate,
+  { name, email, password}: IOngUpdate,
   id: string
 ): Promise< Ong | Array<string | number>> => {
   const ongRepository = AppDataSource.getRepository(Ong);

@@ -9,6 +9,7 @@ const ongCreateService = async ({
   name,
   email,
   password,
+  isOngAdm,
   address: { district, zipCode, number, city, state },
 }: IOngRequest) => {
   const ongRepository = AppDataSource.getRepository(Ong);
@@ -64,7 +65,7 @@ const ongCreateService = async ({
     name,
     email,
     password: hashedPassword,
-
+    isOngAdm,
     address: { ...createdAddress },
   });
 

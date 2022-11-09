@@ -24,6 +24,9 @@ class User{
 
     @Column()
     isActive: boolean
+
+    @Column({default: false})
+    isOng: boolean;
     
     @CreateDateColumn()
     createdAt: Date

@@ -8,9 +8,9 @@ import listUserController from "../services/user/listUsers.service";
 const useroutes = Router();
 
 useroutes.post("", createUserController)
-useroutes.post("/", userLoginController);
+useroutes.post("/login", userLoginController);
 useroutes.get("/", listUserController);
-useroutes.patch("", updateUserController);
+useroutes.patch("/:id", updateUserController);
 
 export default useroutes
 
