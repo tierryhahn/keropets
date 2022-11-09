@@ -21,7 +21,7 @@ describe('Testing pet routes', () => {
 
   it('GET /pet -> Must be able to list all pets', async () => {
 
-    const result = await request(app).get('/pet')
+    const result = await request(app).get('/pets')
 
     expect(result.status).toBe(200)
 

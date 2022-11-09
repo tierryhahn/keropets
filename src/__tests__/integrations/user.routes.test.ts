@@ -31,9 +31,7 @@ describe("Testing User routes", () => {
      })
 
     test("POST /login -  should be able to login a user",async () => {
-        const response = await request(app).post("/user/login").send(mockedUserLogin);
-        console.log(response.body)
-        
+        const response = await request(app).post("/user/login").send(mockedUserLogin);        
         expect(response.body).toHaveProperty("token")
         expect(response.status).toBe(200)
      

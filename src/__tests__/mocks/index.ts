@@ -54,7 +54,7 @@ export const mockedOngLogin : IOngLogin = {
 export const mockedAdminLogin : IOngLogin = {
     email: "contato@suipa.com",
     password: "12345"
-
+}
 
 export const mockedUser : IUserRequest = {
     name: "kalebe",

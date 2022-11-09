@@ -48,7 +48,7 @@ describe("Testing Ong routes", () => {
      
     })
     test("GET /ong - Must be able to list ongs", async () => {
-      //  await request(app).post('/ong').send(mockedOng)
+    
         const ongLoginResponse = await request(app).post('/ong/login').send(mockedOngLogin)
         const response = await request(app).get('/ong').set('Authorization', `Bearer ${ongLoginResponse.body.token}`)
         expect(response.body).toHaveLength(1)
@@ -95,10 +95,6 @@ describe("Testing Ong routes", () => {
         const ongUpdatedId = ongTobeUpdatedRequest.body[0].id
 
         const response = await request(app).patch(`/ong/${ongUpdatedId}`).set("Authorization", token).send(newValues)
-       
-       // const ongUpdated = await request(app).get("ong").set("Authorization", token);
-
-
 
         expect(response.status).toBe(200);
         expect(response.body.name).toEqual("Novo Nome da Ong")
@@ -119,7 +115,6 @@ describe("Testing Ong routes", () => {
         const ongDel2: Array<Ong> = findUser.body
         
         const findOgDelId: any =  ongDel2.find(ong => ong.id === ongDelId)
-        console.log(findOgDelId)
 
         expect(response.status).toBe(204)
         expect(findOgDelId.isActive).toBe(false)
