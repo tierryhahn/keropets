@@ -4,10 +4,12 @@ import { Ong } from "../../entities/ong.entity";
 
 const ongDeleteservice = async (id: string): Promise<void> => {
     const ongRepository = AppDataSource.getRepository(Ong);
-
+    
+    
     const findOng = await ongRepository.findOneBy({
         id
     });
+    console.log(findOng);
 
     if(!findOng) {
         throw new AppError("Ong not found")
@@ -20,6 +22,12 @@ const ongDeleteservice = async (id: string): Promise<void> => {
     await ongRepository.update(id, {
         isActive: false,
     })
+
+    const findOng2 = await ongRepository.findOneBy({
+        id: findOng.id
+    });
+    console.log(findOng2);
+    
 }
 
 export default ongDeleteservice;

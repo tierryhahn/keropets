@@ -4,13 +4,13 @@ declare global {
 	namespace Express {
 		interface Request {
 			user: {
-				isOng: boolean;
+				isAdm: boolean;
 				id: string;
-			};
+			}
 			ong: {
-				isActive: boolean;
+				isOngAdm: boolean;
 				id: string;
-			};
+			}
 		}
 	}
 }

@@ -11,9 +11,11 @@ const useroutes = Router();
 
 useroutes.post("", createUserController)
 useroutes.post("/login", userLoginController);
+
 useroutes.get("", listUserController);
 useroutes.patch("/:id", updateUserController);
 useroutes.delete("/:id", softDeleteUserController)
+
 
 export default useroutes
 

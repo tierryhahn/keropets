@@ -12,7 +12,9 @@ const ongUpdateController = async(req: Request, res: Response) => {
     const bodyKeys = Object.keys(req.body);
     if(
         bodyKeys.includes("isActive") ||
-        bodyKeys.includes("id")
+        bodyKeys.includes("id") ||
+        bodyKeys.includes("isOng") ||
+        bodyKeys.includes("isOngAdm")
     ) {
         throw new AppError("Can not update this field", 401)
     }
