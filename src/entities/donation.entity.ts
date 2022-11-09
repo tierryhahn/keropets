@@ -1,6 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
-import { User } from './user.entity'
-import { Ong } from './ong.entity'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm'
 
 @Entity('donations')
 export class Donation {
@@ -9,15 +7,15 @@ export class Donation {
   readonly id: string
 
   @Column({ length: 68 })
-  type: string
+  donated: string
 
-  @Column({ length: 68 })
-  quantity: string
+  @Column()
+  donatedBy: string
+  
+  @Column()
+  donatedTo: string
 
-  @ManyToOne(() => User)
-  user: User
-
-  @ManyToOne(() => Ong)
-  ong: Ong
+  @CreateDateColumn({type: "date"})
+  donatedAt: Date
 
 }

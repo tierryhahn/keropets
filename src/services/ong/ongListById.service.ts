@@ -3,7 +3,7 @@ import { Ong } from "../../entities/ong.entity";
 import { AppError } from "../../errors/appError";
 
 
-const ongListByIdService = async (id: string) => {
+const ongListByIdService = async (id: string): Promise<Object> => {
     
     const ongRepository = AppDataSource.getRepository(Ong);
 

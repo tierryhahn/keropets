@@ -1,3 +1,4 @@
+import "express-async-errors"
 import express from 'express'
 import { errorMiddleware } from './middlewares/error.middleware'
 import { Request, Response } from 'express'
@@ -12,17 +13,12 @@ const app = express()
 app.use(express.json())
 app.use("/ong", ongRoutes)
 app.use("/ong", sessionRoutes)
-app.use("/pet", petRoutes)
+app.use("/pets", petRoutes)
 app.use('/donations', donationRoutes)
 app.use('/user', userRoutes)
     
-app.get('/', (req: Request, res: Response) => {
-        
-    res.status(200).json({
-        message: "Hello World"
-    })
-})
+
     
 app.use(errorMiddleware)
     
-app.listen(process.env.PORT || 3000)
+export default app

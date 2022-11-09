@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany  } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn  } from "typeorm";
 import { Exclude } from "class-transformer";
 import { Pets } from "./pets.entity";
+import { Address } from "./adress_entity";
 
 @Entity('users')
 class User{
@@ -23,6 +24,9 @@ class User{
 
     @Column()
     isActive: boolean
+
+    @Column({default: false})
+    isOng: boolean;
     
     @CreateDateColumn()
     createdAt: Date
@@ -30,8 +34,12 @@ class User{
     @UpdateDateColumn()
     updatedAt: Date
     
-    @OneToMany(() => Pets, userPets => userPets.user)
-    pets: Pets[]
+    @OneToOne(() => Address, user => User, {
+        eager: true,
+        cascade: true
+    })
+    @JoinColumn()
+    address: Address;
 }
 
 export {User}

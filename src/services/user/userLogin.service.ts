@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
-const userLoginService = async ({ email, password }: IUserLogin) => {
+const userLoginService = async ({ email, password }: IUserLogin): Promise<string>  => {
   const userRepository = AppDataSource.getRepository(User);
   const users = await userRepository.find();
   const account = users.find((user) => user.email === email);

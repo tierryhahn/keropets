@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Exclude } from "class-transformer";
 import { Address } from "./adress_entity";
 import { Donation } from "./donation.entity";
 import { Pets } from "./pets.entity";
@@ -17,11 +18,19 @@ export class Ong {
     })
     email: string;
 
-    @Column()
+    @Column({default: true})
     isActive: boolean;
 
+    @Column({default: true})
+    isOng: boolean;
+
     @Column()
+    isOngAdm: boolean;
+
+    @Exclude()
+    @Column({length:120})  
     password: string;
+
 
     @CreateDateColumn({type: "date"})
     createdAt: Date
@@ -36,14 +45,6 @@ export class Ong {
     @JoinColumn()
     address: Address;
 
-    @OneToMany(() => Pets, pet => pet.ong)
-    pet: Pets[];
-
-    @OneToMany(() => Donation, (donation) => donation.ong)
-    donations: Donation[]
-
-
-
-
+    
 
 }
