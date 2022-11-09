@@ -155,7 +155,7 @@ yarn typeorm migration:run -d src/data-source.ts
 GET /user
 ```
 
-### 1.4. **Update usuário **
+### 1.4. **Update usuário**
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
@@ -170,7 +170,7 @@ GET /user
 }
 ```
 
-### 1.5. **Delete usuário **
+### 1.5. **Delete usuário**
 
 [ Voltar aos Endpoints ](#5-endpoints)
 
