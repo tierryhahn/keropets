@@ -5,16 +5,8 @@ import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
 const createDonationController = async (req: Request, res: Response) => {
-  let token = req.headers.authorization
-  token = token!.split(' ')[1]
 
-  let userId = ''
-
-  jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded: any) => {
-    userId = decoded.sub
-  })
-
-  const donation: IDonationRequest = { userId, ...req.body }
+  const donation: IDonationRequest = { ...req.body }
 
   const createdDonation = await createDonationService(donation)
 

@@ -11,7 +11,7 @@ const ongCreateService = async ({
   password,
   isOngAdm,
   address: { district, zipCode, number, city, state },
-}: IOngRequest) => {
+}: IOngRequest): Promise<Ong> => {
   const ongRepository = AppDataSource.getRepository(Ong);
   const addressRepository = AppDataSource.getRepository(Address);
 

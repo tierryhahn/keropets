@@ -22,3 +22,7 @@ export interface IPetsRequest {
     isAvailable?: boolean,
     ownerId?: string
 }
+
+export interface IPetsAdopt {
+    ownerId: string
+}

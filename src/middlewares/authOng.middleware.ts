@@ -24,10 +24,12 @@ const ensureOngAuthMiddleware = async (req: Request, res: Response, next: NextFu
                 message: "Invalid token"
             })
         }
+        
         req.ong = {
             isOngAdm : decoded.isOngAdm,
             id: decoded.id
         }
+
         return next()
     })
 }

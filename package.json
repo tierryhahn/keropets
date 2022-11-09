@@ -1,5 +1,5 @@
 {
-  "name": "Capstone",
+  "name": "capstone",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/tierryhahn/keropets.git",
@@ -27,13 +27,15 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4"
   },
-  "dependencies": {
+  "dependencies": 
+  {
     "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/pg": "^8.6.5",
     "@types/reflect-metadata": "^0.1.0",
     "@types/uuid": "^8.3.4",
+
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
