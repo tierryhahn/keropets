@@ -1,12 +1,12 @@
 export interface IDonationRequest {
-  type: string
+  donated: string
   donatedBy: string
   donatedTo: string
   quantity: string
 }
 export interface IDonationCreated {
-  user: string
-  ong: string
-  type: string
-  quantity: string
+  donatedBy: string
+  donatedTo: string
+  donated: string
+  createdAt: Date
 }

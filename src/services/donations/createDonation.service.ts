@@ -5,7 +5,7 @@ import { User } from '../../entities/user.entity'
 import { AppError } from '../../errors/appError'
 import { IDonationRequest } from '../../interfaces/donations'
 
-const createDonationService = async ({ type, quantity, donatedBy, donatedTo }: IDonationRequest) => {
+const createDonationService = async ({ donated, donatedBy, donatedTo }: IDonationRequest) => {
   const userRepository = AppDataSource.getRepository(User)
   const ongRepository = AppDataSource.getRepository(Ong)
   const donationRepository = AppDataSource.getRepository(Donation)
@@ -14,16 +14,15 @@ const createDonationService = async ({ type, quantity, donatedBy, donatedTo }: I
   const findOng = await ongRepository.findOneBy({ id: donatedTo })
 
   if (!findOng) {
-    throw new AppError('Ong ID not found', 400)
+    throw new AppError('Ong ID not found', 404)
   }
 
   if(!findUser){
-    throw new AppError('User Id not found', 400)
+    throw new AppError('User Id not found', 404)
   }
 
   const createDonation =  donationRepository.create({
-    type,
-    quantity,
+    donated,
     donatedBy,
     donatedTo
   })
