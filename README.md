@@ -81,8 +81,20 @@ yarn typeorm migration:run -d src/data-source.ts
 	- [PATCH - /user/:id](#14-update-usuário)
 	- [DELETE - /user/:id](#15-delete-usuário)
 - [Pets](#2-pets)
+	- [POST - /pets](#21-criação-de-pet)
+	- [GET - /pets](#22-listando-pets)
+	- [PATCH - /pets/:id](#23-update-pet)
+	- [PATCH - /pets/adopt/:id](#24-adote-pet)
+	- [DELETE - /pets/:id](#25-delete-pet)
 - [Donations](#3-donations)
+	- [POST - /donations](#1-criação-de-doação)
 - [Ong](#4-ong)
+	- [POST - /ong](#41-criação-de-ong)
+	- [POST - /ong/login](#42-login-da-ong)
+	- [GET - /ong](#43-listando-ongs)
+	- [GET - /ong/:id](#44-listando-ongs-por-id)
+	- [PATCH - /ong/:id](#45-update-ong)
+	- [DELETE - /ong/:id](#46-delete-ong)
 
 ---
 
