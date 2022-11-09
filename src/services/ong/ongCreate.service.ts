@@ -2,6 +2,7 @@ import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { Address } from "../../entities/adress_entity";
 import { Ong } from "../../entities/ong.entity";
+import { Address } from "../../entities/adress_entity";
 import { AppError } from "../../errors/appError";
 import { IOngRequest } from "../../interfaces/ongs";
 
@@ -10,7 +11,7 @@ const ongCreateService = async ({
   email,
   password,
   address: { district, zipCode, number, city, state },
-}: IOngRequest) => {
+}: IOngRequest): Promise<Ong> => {
   const ongRepository = AppDataSource.getRepository(Ong);
   const addressRepository = AppDataSource.getRepository(Address);
 
