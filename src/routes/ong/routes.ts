@@ -13,7 +13,7 @@ ongRoutes.post(
     "",
     ongCreateController
 )
-ongRoutes.patch("/:id", ensureOngAuthMiddleware, ongUpdateController)
+ongRoutes.patch("/:id", ongUpdateController)
 ongRoutes.delete("/:id", ensureOngAuthMiddleware, ongDeleteController)
 ongRoutes.get(
     "", 

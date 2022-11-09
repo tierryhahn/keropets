@@ -77,6 +77,32 @@ describe("Testing Ong routes", () => {
         expect(response.address).toHaveProperty("number")
         expect(response.address).toHaveProperty("city")
         expect(response.address).toHaveProperty("state")
+
+        
+    })
+
+    test("PATCH /ong/:id -  should be able to update ong", async () => {
+        const newValues = {
+            name: "Novo Nome da Ong",
+            email: "contato@novaong.com"
+        }
+
+        const ongLogin = await request(app).post("/ong").send(mockedOngLogin);
+        const token = `Bearer ${ongLogin.body.token}`
+
+        const ongTobeUpdatedRequest= await request(app).get("/ong").set("Authorization", token)
+        const ongUpdatedId = ongTobeUpdatedRequest.body[0].id
+
+        const response = await request(app).patch(`/ong/${ongUpdatedId}`).set("Authorization", token).send(newValues)
+        console.log(response.body)
+        const ongUpdated = await request(app).get("ong").set("Authorization", token);
+
+
+
+        expect(response.status).toBe(200);
+        expect(response.body.name).toEqual("Novo Nome da Ong")
+        expect(response.body).not.toHaveProperty("password")
+
     })
 
 
