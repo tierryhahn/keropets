@@ -9,7 +9,6 @@ import listUserByIDController from "../controllers/user/listUserByID.controller"
 
 const useroutes = Router();
 
-<<<<<<< HEAD
 useroutes.post("", createUserController)
 useroutes.post("/login", userLoginController);
 useroutes.get("", listUserController);
@@ -18,12 +17,3 @@ useroutes.delete("/:id", softDeleteUserController)
 
 export default useroutes
 
-=======
-userRoutes.post("/", createUserController);
-userRoutes.post("/", userLoginController);
-userRoutes.get("/", listUserController);
-userRoutes.get("/:id", listUserByIDController)
-userRoutes.patch("", updateUserController);
-
-export default userRoutes;
->>>>>>> b89483b17c75ecfd1bce062e450084ba556e50cf

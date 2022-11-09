@@ -2,7 +2,6 @@ import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { Address } from "../../entities/adress_entity";
 import { Ong } from "../../entities/ong.entity";
-import { Address } from "../../entities/adress_entity";
 import { AppError } from "../../errors/appError";
 import { IOngRequest } from "../../interfaces/ongs";
 
