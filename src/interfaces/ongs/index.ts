@@ -1,6 +1,14 @@
 import { Address } from '../../entities/adress_entity'
 import { Pets } from '../../entities/pets.entity'
 
+export interface IAddressRequest {
+    district: string;
+    zipCode: string;
+    number?: string;
+    city: string;
+    state: string;
+  }
+
 export interface IOng {
     name: string,
     email: string,
@@ -10,25 +18,26 @@ export interface IOng {
     updatedAt: Date,
     pets: Pets[],
     donations: string,
-    adress: string
+    address: IAddressRequest
 
 }
 
 export interface IOngRequest {
     name: string,
     email: string,
-    password: string,
-    address: Address
+    password?: string,
+    address: IAddressRequest
 }
 
 export interface IOngUpdate {
     name?: string,
     email?: string,
     password?: string,
-    adress?: Address
+    address?: IAddressRequest
 }
 
 export interface IOngLogin {
     email: string,
     password: string
 }
+

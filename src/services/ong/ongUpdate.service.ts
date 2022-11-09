@@ -7,7 +7,7 @@ import { IOngUpdate } from "../../interfaces/ongs";
 const ongUpdateService = async (
   { name, email, password }: IOngUpdate,
   id: string
-) => {
+): Promise< Ong | Array<string | number>> => {
   const ongRepository = AppDataSource.getRepository(Ong);
 
   const findOng = await ongRepository.findOneBy({

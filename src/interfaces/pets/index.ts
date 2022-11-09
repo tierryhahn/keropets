@@ -3,9 +3,8 @@ export interface IPets {
     name: string,
     breed: string,
     age: string,
-    adopted: boolean,
-    userId: string,
-    ongId: string
+    isAvailable: boolean,
+    ownerId: string
 }
 
 export interface IPetsUpdate {
@@ -20,7 +19,10 @@ export interface IPetsRequest {
     species?: string,
     breed?:string,
     age: string,
-    adopted?: string,
-    userId?: string,
-    ongId: string
+    isAvailable?: boolean,
+    ownerId?: string
+}
+
+export interface IPetsAdopt {
+    ownerId: string
 }

@@ -11,7 +11,7 @@ export default {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "C:\\Users\\jessi\\AppData\\Local\\Temp\\jest",
+  // cacheDirectory: "/tmp/jest_rs",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   // clearMocks: false,
@@ -27,7 +27,7 @@ export default {
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
+  //   "/node_modules/"
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -100,7 +100,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-   preset: 'ts-jest',
+   preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -154,13 +154,12 @@ export default {
 
   // The glob patterns Jest uses to detect test files
    testMatch: [
-     "**/__tests__/**/*.[jt]s?(x)",
-     "**/?(*.)+(spec|test).[tj]s?(x)"
-   ],
+     "**/__tests__/integrations/*.[jt]s?(x)",
+     "**/__tests__/units/*.[jt]s?(x)"   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
+  //   "/node_modules/"
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -177,8 +176,8 @@ export default {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "\\\\node_modules\\\\",
-  //   "\\.pnp\\.[^\\\\]+$"
+  //   "/node_modules/",
+  //   "\\.pnp\\.[^\\/]+$"
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

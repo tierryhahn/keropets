@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { AppError, handleError } from "../../errors/appError";
 import { IUserLogin } from "../../interfaces/users";
-import userLogonService from "../../services/user/userLogin.service";
+import userLoginService from "../../services/user/userLogin.service";
+
 
 const userLoginController = async (req: Request, resp: Response) => {
   try {
     const { email, password }: IUserLogin = req.body;
-    const token = await userLogonService({ email, password });
+    const token = await userLoginService({ email, password });
 
     return resp.status(200).json({ token });
   } catch (err) {
