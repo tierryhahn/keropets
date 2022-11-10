@@ -106,7 +106,7 @@ yarn typeorm migration:run -d src/data-source.ts
 | Método   | Rota       | Descrição                               |
 |----------|------------|-----------------------------------------|
 | POST     | /user     | Criação de um usuário.                  |
-| POST     | /user/loin     | Login de um usuário.                  |
+| POST     | /user/login     | Login de um usuário.                  |
 | GET      | /user     | Lista todos os usuários.                 |
 | PATCH      | /user/:id     | Update do usuário. 
 | DELETE      | /user/:id     | Delete de um usuário. 
@@ -179,4 +179,212 @@ GET /user
 ### Exemplo de Request:
 ```
 DELETE /user/:id
+```
+
+## 2. **Pets**
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### Endpoints
+
+| Método   | Rota       | Descrição                               |
+|----------|------------|-----------------------------------------|
+| POST     | /pets     | Criação de um pet.                  |
+| GET     | /pets     | Listando pets.                  |
+| PATCH      | /pets/:id     | Update de um pet.                 |
+| PATCH      | /pets/adopt/:id     | Adote um pet. 
+| DELETE      | /pets/:id     | Delete de um pet. 
+
+---
+
+### 2.1. **Criação de Pet**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/pets`
+
+### Corpo da Requisição:
+```json
+{
+	"name": "Rex",
+	"species": "Pitbull",
+	"breed": "Maltês",
+	"age": "1",
+	"ownerId": "3"
+}
+```
+
+### 2.2. **Listando Pets**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/pets`
+
+### Exemplo de Request:
+```
+GET /pets
+```
+
+### 2.3. **Update pet**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/pets/:id`
+
+### Corpo da Requisição:
+```json
+{
+	"name": "Novo nome",
+	"species": "Nova espécie",
+	"breed": "Nova raça",
+	"age": "Nova idade"
+}
+```
+
+### 2.4. **Adote um pet**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/pets/adopt/:id`
+
+### Corpo da Requisição:
+```json
+{
+	"ownerId": "Id do dono",
+}
+```
+
+### 2.5. **Delete pet**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/pets/:id`
+
+### Exemplo de Request:
+```
+DELETE /pets/:id
+```
+
+## 3. **Donations**
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### Endpoints
+
+| Método   | Rota       | Descrição                               |
+|----------|------------|-----------------------------------------|
+| POST     | /donations     | Criação de uma doação.                  |
+---
+
+### 3.1. **Criação de uma doação**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/donations`
+
+### Corpo da Requisição:
+```json
+{
+	"donated": "50",
+	"donatedBy": "Fulano",
+	"donatedTo": "Pequenos Cachorros Adoção"
+}
+```
+
+## 4. **Ong**
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### Endpoints
+
+| Método   | Rota       | Descrição                               |
+|----------|------------|-----------------------------------------|
+| POST     | /ong     | Criação de uma ong.                  |
+| POST     | /ong/login     | Login de uma ong.                  |
+| GET      | /ong     | Lista todas as ongs                 |
+| GET      | /ong/:id     | Listar ong por id              |
+| PATCH      | /ong/:id     | Update de uma ong. 
+| DELETE      | /ong/:id     | Delete de uma ong. 
+---
+
+### 4.1. **Criação de uma ong**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/ong`
+
+### Corpo da Requisição:
+```json
+{
+	"name": "Pequenos Cachorros Adoção",
+	"email": "pequenosdogs@mail.com",
+	"password": "123456",
+	"isOngAdm": true,
+	"address": {
+		"district": "Partenon",
+    		"zipCode": "95000-000",
+    		"number": "47",
+    		"city": "Porto Alegre",
+	    	"state": "RS"
+	}
+}
+```
+
+### 4.2. **Login ong**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/ong/login`
+
+### Corpo da Requisição:
+```json
+{
+	"email": "pequenosdogs@mail.com",
+	"password": "123456",
+}
+```
+
+### 4.3. **Listando Ongs**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/ong`
+
+### Exemplo de Request:
+```
+GET /ong
+```
+
+### 4.4. **Listando Ong por Id**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/ong/:id`
+
+### Exemplo de Request:
+```
+GET /ong/:id
+```
+
+### 4.5. **Update ong**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/ong/:id`
+
+### Corpo da Requisição:
+```json
+{
+	"name": "Novo nome da ong",
+	"email": "Novo email",
+	"password": "Nova senha"
+}
+```
+
+### 4.5. **Delete ong**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/ong/:id`
+
+### Exemplo de Request:
+```
+DELETE /ong/:id
 ```
