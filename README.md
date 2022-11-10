@@ -139,7 +139,7 @@ yarn typeorm migration:run -d src/data-source.ts
 ### Corpo da Requisição:
 ```json
 {
-	"name": "Fulano",
+	"email": "fulano@mail.com",
 	"password": "1234",
 }
 ```
